@@ -12,6 +12,7 @@
   <div class="stackedit__html"><h2><a id="_1"></a>概述</h2>
 <p>你好！ 这是你第一次使用 <strong>Markdown编辑器</strong> 所展示的欢迎页。如果你想学习如何使用Markdown编辑器, 可以仔细阅读这篇文章，了解一下Markdown的基本语法知识。</p>
 
+
 <h2><a id="1_5"></a>方法1</h2>
 <pre><code>   Display defaultDisplay = getWindowManager().getDefaultDisplay();
     Point point = new Point();
@@ -20,6 +21,8 @@
     int y = point.y;
     Log.i(TAG, "x = " + x + ",y = " + y);
 </code></pre>
+
+
 
 <h2><a id="2_15"></a>方法2</h2>
 <pre><code>Rect outSize = new Rect();
@@ -31,6 +34,8 @@
     Log.d(TAG, "left = " + left + ",top = " + top + ",right = " + right + ",bottom = " + bottom);
 </code></pre>
 
+
+
 <h2><a id="3_26"></a>方法3</h2>
 <pre><code>  DisplayMetrics outMetrics = new DisplayMetrics();
     getWindowManager().getDefaultDisplay().getMetrics(outMetrics);
@@ -38,6 +43,40 @@
     int heightPixels = outMetrics.heightPixels;
     Log.i(TAG, "widthPixels = " + widthPixels + ",heightPixels = " + heightPixels);
 </code></pre>
+
+
+
+<h2><a id="4_35"></a>方法4</h2>
+<pre><code>   Point outSize = new Point();
+   getWindowManager().getDefaultDisplay().getRealSize(outSize);
+   int x = outSize.x;
+   int y = outSize.y;
+   Log.w(TAG, "x = " + x + ",y = " + y);
+</code></pre>
+
+<h2><a id="5_44"></a>方法5</h2>
+<pre><code> DisplayMetrics outMetrics = new DisplayMetrics();
+    getWindowManager().getDefaultDisplay().getRealMetrics(outMetrics);
+    int widthPixel = outMetrics.widthPixels;
+    int heightPixel = outMetrics.heightPixels;
+    Log.w(TAG, "widthPixel = " + widthPixel + ",heightPixel = " + heightPixel);
+</code></pre>
+
+<p>我们注意到方法1,2,3显示屏幕的分辨率是 1440x2768，而方法4,5显示的屏幕的分辨率是1440x2960。为什么是这样了？</p>
+<ol>
+<li>
+<p>应用程序显示区域指定可能包含应用程序窗口的显示部分，不包括系统装饰。 应用程序显示区域可以小于实际显示区域，因为系统减去诸如状态栏之类的装饰元素所需的空间。 使用以下方法查询应用程序显示区域：getSize（Point），getRectSize（Rect）和getMetrics（DisplayMetrics）。</p>
+</li>
+<li>
+<p>实际显示区域指定包含系统装饰的内容的显示部分。 即便如此，如果窗口管理器使用（adb shell wm size）模拟较小的显示器，则实际显示区域可能小于显示器的物理尺寸。 使用以下方法查询实际显示区域：getRealSize（Point），getRealMetrics（DisplayMetrics）。</p>
+</li>
+</ol>
+<h2><a id="_59"></a>参考</h2>
+<p>应用程序用于与窗口管理器通信的界面。</p>
+<ul>
+<li><a href="https://developer.android.com/reference/android/view/WindowManager#getDefaultDisplay()">WindowManager</a></li>
+<li><a href="https://developer.android.com/reference/android/view/Display#getRealMetrics(android.util.DisplayMetrics)">Display</a></li>
+</ul>
 </div>
 </body>
 
