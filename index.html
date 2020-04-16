@@ -1,10 +1,35 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>ceshi</title>
-</head>
-<body>
-	HelloWorld
 
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>获取Android屏幕宽度方法</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h2><a id="_1"></a>概述</h2>
+<p>你好！ 这是你第一次使用 <strong>Markdown编辑器</strong> 所展示的欢迎页。如果你想学习如何使用Markdown编辑器, 可以仔细阅读这篇文章，了解一下Markdown的基本语法知识。</p>
+<h2><a id="1_5"></a>方法1</h2>
+<pre><code>   Display defaultDisplay = getWindowManager().getDefaultDisplay();
+    Point point = new Point();
+    defaultDisplay.getSize(point);
+    int x = point.x;
+    int y = point.y;
+    Log.i(TAG, "x = " + x + ",y = " + y);
+</code></pre>
+<h2><a id="2_15"></a>方法2</h2>
+<pre><code>Rect outSize = new Rect();
+    getWindowManager().getDefaultDisplay().getRectSize(outSize);
+    int left = outSize.left;
+    int top = outSize.top;
+    int right = outSize.right;
+    int bottom = outSize.bottom;
+    Log.d(TAG, "left = " + left + ",top = " + top + ",right = " + right + ",bottom = " + bottom);
+</code></pre>
+</div>
 </body>
+
 </html>
+
