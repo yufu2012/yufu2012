@@ -11,6 +11,7 @@
 <body class="stackedit">
   <div class="stackedit__html"><h2><a id="_1"></a>概述</h2>
 <p>你好！ 这是你第一次使用 <strong>Markdown编辑器</strong> 所展示的欢迎页。如果你想学习如何使用Markdown编辑器, 可以仔细阅读这篇文章，了解一下Markdown的基本语法知识。</p>
+
 <h2><a id="1_5"></a>方法1</h2>
 <pre><code>   Display defaultDisplay = getWindowManager().getDefaultDisplay();
     Point point = new Point();
@@ -19,6 +20,7 @@
     int y = point.y;
     Log.i(TAG, "x = " + x + ",y = " + y);
 </code></pre>
+
 <h2><a id="2_15"></a>方法2</h2>
 <pre><code>Rect outSize = new Rect();
     getWindowManager().getDefaultDisplay().getRectSize(outSize);
@@ -27,6 +29,14 @@
     int right = outSize.right;
     int bottom = outSize.bottom;
     Log.d(TAG, "left = " + left + ",top = " + top + ",right = " + right + ",bottom = " + bottom);
+</code></pre>
+
+<h2><a id="3_26"></a>方法3</h2>
+<pre><code>  DisplayMetrics outMetrics = new DisplayMetrics();
+    getWindowManager().getDefaultDisplay().getMetrics(outMetrics);
+    int widthPixels = outMetrics.widthPixels;
+    int heightPixels = outMetrics.heightPixels;
+    Log.i(TAG, "widthPixels = " + widthPixels + ",heightPixels = " + heightPixels);
 </code></pre>
 </div>
 </body>
